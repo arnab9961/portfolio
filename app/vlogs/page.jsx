@@ -44,23 +44,23 @@ export default function VlogsPage() {
           <div className="vlog-layout">
             <nav className="vlog-categories" aria-label="Vlog categories">
               <span className="vlog-nav-title">Browse notes</span>
-              <Link href="/vlogs/" aria-current={!selectedCategory ? "page" : undefined}>All notes</Link>
+              <a href="/vlogs/" aria-current={!selectedCategory ? "page" : undefined}>All notes</a>
               {categories.map((category) => (
-                <Link
+                <a
                   key={category}
                   href={`/vlogs/?category=${encodeURIComponent(category)}`}
                   aria-current={selectedCategory === category ? "page" : undefined}
                 >
                   {category}
-                </Link>
+                </a>
               ))}
             </nav>
             <div className="vlog-results">
           {selectedPost ? (
             <>
-              <Link className="vlog-back" href={`/vlogs/${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}` : ""}`}>
+              <a className="vlog-back" href={`/vlogs/${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}` : ""}`}>
                 ← Back to all notes
-              </Link>
+              </a>
               <Vlogs posts={[selectedPost]} detail />
             </>
           ) : (

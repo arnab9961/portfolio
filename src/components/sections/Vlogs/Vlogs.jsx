@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import Link from "next/link";
 import HourMark from "../../ui/common/HourMark";
 import { splitVlogBody } from "../../../utils/vlogContent";
 
@@ -17,7 +16,7 @@ export default function Vlogs({ posts, detail = false }) {
             )}
             <div>
               <span className="vlog-category">{post.category || "uncategorized"}</span>
-              <h3><Link href={`/vlogs/?post=${encodeURIComponent(post.slug)}`}>{post.title}</Link></h3>
+              <h3><a href={`/vlogs/?post=${encodeURIComponent(post.slug)}`}>{post.title}</a></h3>
               {detail ? (
                 <>
                   {splitVlogBody(post.body).map((part, index) =>
@@ -40,7 +39,7 @@ export default function Vlogs({ posts, detail = false }) {
               ) : (
                 <>
                   <p className="vlog-excerpt">{post.body.replace(/```[\s\S]*?```/g, "").trim().slice(0, 180)}...</p>
-                  <Link className="vlog-read" href={`/vlogs/?post=${encodeURIComponent(post.slug)}`}>Read note →</Link>
+                  <a className="vlog-read" href={`/vlogs/?post=${encodeURIComponent(post.slug)}`}>Read note →</a>
                 </>
               )}
             </div>
