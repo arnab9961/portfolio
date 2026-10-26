@@ -18,7 +18,7 @@ export default function Hero({ profile = null }) {
           <h1>{profile?.headline || HERO_CONTENT.headline}</h1>
           <p className="lede">{profile?.summary || HERO_CONTENT.summary}</p>
           <div className="actions">
-            <a className="btn" href={HERO_CONTENT.resumeUrl} download="DM-Rafiun-Bin-Masud-CV.pdf">
+            <a className="btn" href={HERO_CONTENT.resumeUrl} download="DM_Rafiun_Bin_Masud_Resume.pdf">
               Download résumé
             </a>
             {QUIET_LINKS.map((link) => (

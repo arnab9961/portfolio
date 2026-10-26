@@ -1,6 +1,6 @@
 export const HERO_CONTENT = {
   name: "D.M. Rafiun Bin Masud",
-  resumeUrl: "https://arnab9961.github.io/data/DM_Rafiun_Bin_Masud_CV.pdf",
+  resumeUrl: "/resume/DM_Rafiun_Bin_Masud_Resume.pdf",
   eyebrow: "AI Engineer · Dhaka, Bangladesh",
   headline: "I build practical AI systems for real-world problems.",
   summary:
