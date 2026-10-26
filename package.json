@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "engines": {
-    "node": "24.x"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "python3 -m http.server 4173 --directory out",
     "verify:static": "node scripts/verify-static-output.mjs",

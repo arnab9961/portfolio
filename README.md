@@ -144,7 +144,7 @@ The dashboard is available at `/admin/`. Only users listed in `admin_users` can 
 
 ## Deployment
 
-`next build` writes the static site to `out/`. Netlify uses [`netlify.toml`](./netlify.toml) to publish that directory. Set the build command to `npm run build` if configuring Netlify manually.
+`next build --webpack` writes the static site to `out/`. Netlify uses [`netlify.toml`](./netlify.toml) to publish that directory with Node 22 LTS. Set the build command to `npm run build` if configuring Netlify manually.
 
 ## Repository Guidance
 
