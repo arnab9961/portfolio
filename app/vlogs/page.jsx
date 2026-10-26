@@ -35,10 +35,20 @@ export default function VlogsPage() {
       <Masthead homeHref="/" links={NAV_LINKS} />
       <main id="main-content" tabIndex="-1">
         <section className="vlog-browser wrap" aria-label="Vlog categories">
+          <div className="vlog-intro">
+            <p className="vlog-kicker">A small technical notebook</p>
+            <p className="vlog-count">
+              {selectedPost ? "Reading one note" : `${categoryPosts.length} ${categoryPosts.length === 1 ? "note" : "notes"}`}
+            </p>
+          </div>
           <div className="vlog-categories">
-            <Link href="/vlogs/">All</Link>
+            <Link href="/vlogs/" aria-current={!selectedCategory ? "page" : undefined}>All</Link>
             {categories.map((category) => (
-              <Link key={category} href={`/vlogs/?category=${encodeURIComponent(category)}`}>
+              <Link
+                key={category}
+                href={`/vlogs/?category=${encodeURIComponent(category)}`}
+                aria-current={selectedCategory === category ? "page" : undefined}
+              >
                 {category}
               </Link>
             ))}
@@ -53,13 +63,6 @@ export default function VlogsPage() {
           ) : (
             <>
               <Vlogs posts={categoryPosts} />
-              <div className="vlog-links">
-                {categoryPosts.map((post) => (
-                  <Link key={post.id} href={`/vlogs/?post=${encodeURIComponent(post.slug)}${selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : ""}`}>
-                    Read {post.title}
-                  </Link>
-                ))}
-              </div>
             </>
           )}
         </section>

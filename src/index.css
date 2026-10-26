@@ -302,19 +302,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (min-width: 620px) { .research-grid { grid-template-columns: repeat(2, 1fr); column-gap: 2rem; } }
 @media (min-width: 1000px) { .research-grid { grid-template-columns: repeat(3, 1fr); } }
 .vlogs { padding: 3.5rem 1.25rem 4rem; border-top: 1px solid var(--ink); }
-.vlog-browser { padding-top: 2rem; }
-.vlog-categories, .vlog-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; }
-.vlog-categories { padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); text-transform: capitalize; }
-.vlog-links { padding: 0 1.25rem 3rem; }
+.vlog-browser { padding-top: 2.5rem; }
+.vlog-intro { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: 1.25rem; }
+.vlog-kicker { margin: 0; color: var(--muted); font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.vlog-count { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.vlog-categories { display: flex; flex-wrap: wrap; gap: 0.55rem; padding: 0.8rem 0 1.5rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); text-transform: capitalize; }
+.vlog-categories a { padding: 0.45rem 0.8rem; border: 1px solid transparent; color: var(--muted); text-decoration: none; }
+.vlog-categories a:hover, .vlog-categories a[aria-current="page"] { border-color: var(--ink); color: var(--ink); }
 .vlog-grid { display: grid; gap: 1.25rem; margin-top: 2rem; }
-.vlog-card { display: grid; gap: 1rem; padding: 1rem; border: 1px solid var(--rule); background: var(--lift); }
+.vlog-card { display: grid; gap: 1rem; padding: clamp(1.1rem, 3vw, 2rem); border: 1px solid var(--rule); background: var(--lift); }
 .vlog-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.vlog-card h3 { margin: 0; font: 500 1.45rem/1.2 var(--serif); }
+.vlog-card h3 { margin: 0; font: 500 clamp(1.5rem, 3vw, 2.2rem)/1.15 var(--serif); }
+.vlog-card h3 a { color: inherit; text-decoration: none; }
+.vlog-card h3 a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
 .vlog-category { display: block; margin-bottom: 0.4rem; color: var(--muted); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .vlog-card p { margin: 0.65rem 0 0; color: var(--body); white-space: pre-wrap; }
 .vlog-code { overflow-x: auto; margin: 1rem 0 0; padding: 1rem; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 0.9rem/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre; }
 .code-input { font-family: ui-monospace, SFMono-Regular, Consolas, monospace !important; }
 @media (min-width: 620px) { .vlogs { padding-left: 2.5rem; padding-right: 2.5rem; } .vlog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .vlog-grid { grid-template-columns: minmax(0, 48rem); } }
 @media (min-width: 1000px) { .vlog-grid { grid-template-columns: repeat(3, 1fr); } }
 
 /* Golden hour: the throw, and everything further out */

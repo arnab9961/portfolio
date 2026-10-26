@@ -27,7 +27,7 @@ export default function Vlogs({ posts }) {
                   <p key={`${post.id}-text-${index}`}>{part.value}</p>
                 ),
               )}
-              {post.code_snippet && (
+              {post.code_snippet && !post.body.includes("```") && (
                 <pre className="vlog-code">
                   <code className={post.code_language ? `language-${post.code_language}` : undefined}>
                     {post.code_snippet}
