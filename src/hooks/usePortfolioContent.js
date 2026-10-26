@@ -15,7 +15,7 @@ export default function usePortfolioContent() {
       supabase.from("site_profile").select("*").eq("id", 1).maybeSingle(),
       supabase
         .from("vlog_posts")
-        .select("id, title, body, image_url, slug, published_at")
+        .select("id, title, body, code_snippet, code_language, image_url, slug, published_at")
         .eq("status", "published")
         .order("published_at", { ascending: false }),
     ]).then(([profileResult, vlogsResult]) => {

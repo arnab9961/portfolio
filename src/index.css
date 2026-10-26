@@ -307,6 +307,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .vlog-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .vlog-card h3 { margin: 0; font: 500 1.45rem/1.2 var(--serif); }
 .vlog-card p { margin: 0.65rem 0 0; color: var(--body); white-space: pre-wrap; }
+.vlog-code { overflow-x: auto; margin: 1rem 0 0; padding: 1rem; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 0.9rem/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre; }
+.code-input { font-family: ui-monospace, SFMono-Regular, Consolas, monospace !important; }
 @media (min-width: 620px) { .vlogs { padding-left: 2.5rem; padding-right: 2.5rem; } .vlog-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1000px) { .vlog-grid { grid-template-columns: repeat(3, 1fr); } }
 

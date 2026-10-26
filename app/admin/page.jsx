@@ -34,7 +34,14 @@ export default function AdminPage() {
   const [password, setPassword] = useState("");
   const [profile, setProfile] = useState(EMPTY_PROFILE);
   const [posts, setPosts] = useState([]);
-  const [draft, setDraft] = useState({ title: "", body: "", image_url: "", status: "draft" });
+  const [draft, setDraft] = useState({
+    title: "",
+    body: "",
+    code_snippet: "",
+    code_language: "javascript",
+    image_url: "",
+    status: "draft",
+  });
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -91,6 +98,8 @@ export default function AdminPage() {
     const payload = {
       title: draft.title.trim(),
       body: draft.body.trim(),
+      code_snippet: draft.code_snippet.trim() || null,
+      code_language: draft.code_language.trim() || null,
       image_url: draft.image_url || null,
       status: draft.status,
       slug: createSlug(draft.title),
@@ -102,7 +111,14 @@ export default function AdminPage() {
     const { error } = await query;
     setMessage(error ? getErrorMessage(error) : "Vlog saved.");
     if (!error) {
-      setDraft({ title: "", body: "", image_url: "", status: "draft" });
+      setDraft({
+        title: "",
+        body: "",
+        code_snippet: "",
+        code_language: "javascript",
+        image_url: "",
+        status: "draft",
+      });
       loadContent();
     }
   }
@@ -145,6 +161,8 @@ export default function AdminPage() {
       <section className="admin-section"><h2>New vlog</h2><form className="admin-form" onSubmit={savePost}>
         <label>Title<input value={draft.title} onChange={(event) => setDraft({ ...draft, title: event.target.value })} required /></label>
         <label>Text<textarea value={draft.body} onChange={(event) => setDraft({ ...draft, body: event.target.value })} required /></label>
+        <label>Code language<input value={draft.code_language || ""} onChange={(event) => setDraft({ ...draft, code_language: event.target.value })} placeholder="javascript, python, sql" /></label>
+        <label>Code snippet<textarea className="code-input" value={draft.code_snippet || ""} onChange={(event) => setDraft({ ...draft, code_snippet: event.target.value })} placeholder="Paste an optional code snippet here" spellCheck="false" /></label>
         <label>Status<select value={draft.status} onChange={(event) => setDraft({ ...draft, status: event.target.value })}><option value="draft">Draft</option><option value="published">Published</option></select></label>
         <label>Image<input type="file" accept="image/*" onChange={(event) => uploadImage(event.target.files[0], (url) => setDraft({ ...draft, image_url: url }))} /></label>
         <button className="btn" type="submit">{draft.id ? "Update vlog" : "Save vlog"}</button>
