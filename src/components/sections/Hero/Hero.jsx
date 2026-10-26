@@ -10,7 +10,7 @@ const QUIET_LINKS = [
 export default function Hero() {
   const { light } = useLight();
   const night = light === "night";
-  const { day: dayView, night: nightView } = HERO_CONTENT.view;
+  const { day: dayView } = HERO_CONTENT.view;
 
   return (
     <div className="wrap">
@@ -41,28 +41,15 @@ export default function Hero() {
           <div className="frame">
             {/* eslint-disable-next-line @next/next/no-img-element -- static export, pre-sized local asset */}
             <img
-              className="is-day"
               src={dayView.src}
               alt={dayView.alt}
-              aria-hidden={night}
               width="1200"
               height="800"
               fetchPriority="high"
             />
-            {/* eslint-disable-next-line @next/next/no-img-element -- static export, pre-sized local asset */}
-            <img
-              className="is-night"
-              src={nightView.src}
-              alt={nightView.alt}
-              aria-hidden={!night}
-              width="1100"
-              height="1100"
-              loading="lazy"
-            />
           </div>
           <figcaption className="cap">
-            <span className="is-day-t">{dayView.caption}</span>
-            <span className="is-night-t">{nightView.caption}</span>
+            {dayView.caption}
           </figcaption>
         </figure>
       </div>

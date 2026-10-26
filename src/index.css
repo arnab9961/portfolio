@@ -74,13 +74,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .view { margin: 0; }
 .frame { position: relative; aspect-ratio: 3 / 2; border-radius: 3px; overflow: hidden; }
 .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.7s; }
-.frame .is-day { object-position: 58% 50%; }
-.frame .is-night { object-position: 55% 50%; opacity: 0; }
-.view .is-night-t { display: none; }
-[data-light="night"] .frame .is-night { opacity: 1; }
-[data-light="night"] .frame .is-day { opacity: 0; }
-[data-light="night"] .view .is-day-t { display: none; }
-[data-light="night"] .view .is-night-t { display: inline; }
+.frame img { object-position: 58% 50%; }
 @media (min-width: 900px) {
   .hero { grid-template-columns: repeat(12, 1fr); column-gap: 1.5rem; padding: 3.5rem 0 5rem; align-items: start; }
   .hero .text { grid-column: 1 / span 8; padding-top: 0.5rem; }
