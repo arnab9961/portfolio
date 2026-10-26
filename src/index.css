@@ -301,7 +301,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .research-card p { margin: 0.55rem 0 0.75rem; color: var(--body); }
 @media (min-width: 620px) { .research-grid { grid-template-columns: repeat(2, 1fr); column-gap: 2rem; } }
 @media (min-width: 1000px) { .research-grid { grid-template-columns: repeat(3, 1fr); } }
-.vlogs { padding: 3.5rem 1.25rem 4rem; border-top: 1px solid var(--ink); }
+.vlogs { padding: 3.5rem 0 4rem; border-top: 1px solid var(--ink); }
 .vlog-browser { padding-top: 2.5rem; }
 .vlog-intro { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: 1.25rem; }
 .vlog-kicker { margin: 0; color: var(--muted); font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -319,9 +319,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .vlog-card p { margin: 0.65rem 0 0; color: var(--body); white-space: pre-wrap; }
 .vlog-code { overflow-x: auto; margin: 1rem 0 0; padding: 1rem; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 0.9rem/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre; }
 .code-input { font-family: ui-monospace, SFMono-Regular, Consolas, monospace !important; }
-@media (min-width: 620px) { .vlogs { padding-left: 2.5rem; padding-right: 2.5rem; } .vlog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 620px) { .vlogs { padding-left: 0; padding-right: 0; } }
 @media (min-width: 900px) { .vlog-grid { grid-template-columns: minmax(0, 48rem); } }
-@media (min-width: 1000px) { .vlog-grid { grid-template-columns: repeat(3, 1fr); } }
 
 /* Golden hour: the throw, and everything further out */
 .out { position: relative; padding: 4rem 0 3.5rem; }
