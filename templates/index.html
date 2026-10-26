@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" data-light="day">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AI Engineer D.M. Rafiun Bin Masud — machine learning, computer vision, language models and backend systems.">
+    <title>D.M. Rafiun Bin Masud | AI Engineer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <header class="masthead">
+      <a class="brand" href="#top">Rafiun Bin Masud</a>
+      <nav aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="lamp" type="button" aria-label="Turn lamp on" aria-pressed="false">
+        <span class="cord"></span><span class="lamp-label">Turn lamp on</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero wrap">
+        <div>
+          <p class="eyebrow">AI Engineer · Dhaka, Bangladesh</p>
+          <h1>I build practical AI systems for real-world problems.</h1>
+          <p class="lede">I am an AI Engineer at SM Technology, working across machine learning, computer vision, language models, backend APIs and production-ready deployment. I enjoy turning research ideas into useful, maintainable applications.</p>
+          <div class="actions">
+            <a class="button" href="https://arnab9961.github.io/data/DM_Rafiun_Bin_Masud_CV.pdf">Download CV</a>
+            <a class="quiet" href="https://github.com/arnab9961">GitHub</a>
+            <a class="quiet" href="https://www.linkedin.com/in/arnab9961/">LinkedIn</a>
+          </div>
+        </div>
+        <figure class="portrait">
+          <img src="https://arnab9961.github.io/images/now.jpg" alt="Portrait of D.M. Rafiun Bin Masud">
+          <figcaption>AI engineering, research and applied machine learning.</figcaption>
+        </figure>
+      </section>
+
+      <section class="glance wrap" aria-label="At a glance">
+        <div><small>Now</small><strong>AI Engineer</strong><span>SM Technology · March 2025 – present</span></div>
+        <div><small>Education</small><strong>B.Sc. in CSE</strong><span>East West University · 2024</span></div>
+        <div><small>Focus</small><strong>Applied AI</strong><span>LLMs, RAG, vision, NLP and MLOps</span></div>
+        <div><small>Research</small><strong>Published author</strong><span>IEEE and Springer publications</span></div>
+      </section>
+
+      <section id="projects" class="section wrap">
+        <p class="eyebrow">Selected work</p>
+        <h2>Projects</h2>
+        <div class="project-grid">
+          {% for project in projects %}
+          <article class="card">
+            <p class="category">{{ project.category }}</p>
+            <h3>{{ project.name }}</h3>
+            <h4>{{ project.headline }}</h4>
+            <p>{{ project.summary }}</p>
+            <p class="stack">{{ project.stack }}</p>
+            {% if project.url %}<a class="quiet" href="{{ project.url }}">View project</a>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section id="research" class="section wrap">
+        <p class="eyebrow">Research and community</p>
+        <h2>Beyond the build</h2>
+        <div class="research-grid">
+          {% for title, detail, label, url in research %}
+          <article class="research-card">
+            <h3>{{ title }}</h3>
+            <p>{{ detail }}</p>
+            {% if url %}<a class="quiet" href="{{ url }}">{{ label }}</a>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section id="contact" class="contact wrap">
+        <p class="eyebrow">Let’s connect</p>
+        <h2>Have an AI problem worth exploring?</h2>
+        <p class="lede">I am open to conversations about AI engineering, machine learning, backend systems, research collaborations and applied AI products.</p>
+        <a class="email" href="mailto:dmrafiun@gmail.com">dmrafiun@gmail.com</a>
+        <div class="socials">
+          <a class="quiet" href="https://www.linkedin.com/in/arnab9961/">LinkedIn</a>
+          <a class="quiet" href="https://github.com/arnab9961">GitHub</a>
+          <a class="quiet" href="https://www.kaggle.com/arnab9961">Kaggle</a>
+          <a class="quiet" href="https://www.researchgate.net/profile/Dm-Masud-2/publications">ResearchGate</a>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap">D.M. Rafiun Bin Masud · Dhaka, Bangladesh · AI engineering and research.</footer>
+    <script>
+      const root = document.documentElement;
+      const lamp = document.querySelector(".lamp");
+      const saved = localStorage.getItem("portfolio-light");
+      if (saved === "night") root.dataset.light = "night";
+      const updateLamp = () => {
+        const night = root.dataset.light === "night";
+        lamp.setAttribute("aria-pressed", String(night));
+        lamp.setAttribute("aria-label", night ? "Turn lamp off" : "Turn lamp on");
+        lamp.querySelector(".lamp-label").textContent = night ? "Turn lamp off" : "Turn lamp on";
+      };
+      lamp.addEventListener("click", () => {
+        root.dataset.light = root.dataset.light === "night" ? "day" : "night";
+        localStorage.setItem("portfolio-light", root.dataset.light);
+        updateLamp();
+      });
+      updateLamp();
+    </script>
+  </body>
+</html>
