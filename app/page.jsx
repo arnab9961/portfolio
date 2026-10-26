@@ -1,36 +1,35 @@
 import PortfolioApp from "../src/App";
 
-const SITE_URL = "https://www.liuyuelin.dev/";
+const SITE_URL = "https://arnab9961.github.io/";
 const OG_IMAGE_URL = `${SITE_URL}assets/og-image.png`;
 const DESCRIPTION =
-  "Melbourne-based full-stack software developer building React, TypeScript and Node.js applications for SaaS platforms, internal tools and AI-assisted workflows.";
+  "AI Engineer in Dhaka building practical machine learning, computer vision, language model and backend systems.";
 const SOCIAL_DESCRIPTION =
-  "Explore full-stack case studies across React, Next.js, Node.js, cloud deployments, testing and AI-assisted workflows.";
+  "Explore AI engineering projects, research publications and applied machine learning work by D.M. Rafiun Bin Masud.";
 
 export const dynamic = "error";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Yuelin Liu | Full-Stack Software Developer in Melbourne",
+  title: "D.M. Rafiun Bin Masud | AI Engineer",
   description: DESCRIPTION,
-  authors: [{ name: "Yuelin Liu" }],
+  authors: [{ name: "D.M. Rafiun Bin Masud" }],
   keywords: [
-    "Full-stack software developer Melbourne",
-    "React developer Melbourne",
-    "Next.js developer",
-    "Node.js developer",
-    "TypeScript developer",
-    "REST APIs",
-    "Docker",
-    "Kubernetes",
-    "AI workflows",
+    "AI Engineer Bangladesh",
+    "Machine Learning Engineer",
+    "Computer Vision",
+    "Large Language Models",
+    "RAG",
+    "FastAPI",
+    "Python",
+    "MLOps",
   ],
   alternates: {
     canonical: SITE_URL,
   },
   openGraph: {
     type: "profile",
-    title: "Yuelin Liu | Technical Portfolio",
+    title: "D.M. Rafiun Bin Masud | Technical Portfolio",
     description: SOCIAL_DESCRIPTION,
     url: SITE_URL,
     images: [
@@ -38,19 +37,18 @@ export const metadata = {
         url: OG_IMAGE_URL,
         width: 1200,
         height: 630,
-        alt: "Yuelin Liu's portfolio cover - Full-Stack Software Developer in Melbourne",
+        alt: "D.M. Rafiun Bin Masud's AI engineering portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@YuelinLiu_Dev",
-    title: "Yuelin Liu's Technical Portfolio",
+    title: "D.M. Rafiun Bin Masud's AI Engineering Portfolio",
     images: [OG_IMAGE_URL],
   },
   appleWebApp: {
     capable: true,
-    title: "Yuelin's Portfolio",
+    title: "Rafiun's Portfolio",
     statusBarStyle: "black-translucent",
   },
   other: {
@@ -61,40 +59,39 @@ export const metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Yuelin Liu",
+  name: "D.M. Rafiun Bin Masud",
   image: OG_IMAGE_URL,
-  jobTitle: "Full-Stack Software Developer",
+  jobTitle: "AI Engineer",
   url: SITE_URL,
   sameAs: [
-    "https://www.linkedin.com/in/liuyuelintop/",
-    "https://github.com/liuyuelintop",
-    "https://blog.liuyuelin.dev/",
+    "https://www.linkedin.com/in/arnab9961/",
+    "https://github.com/arnab9961",
+    "https://www.kaggle.com/arnab9961",
+    "https://www.researchgate.net/profile/Dm-Masud-2/publications",
   ],
   description: DESCRIPTION,
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Melbourne",
-    addressRegion: "VIC",
-    addressCountry: "Australia",
+    addressLocality: "Dhaka",
+    addressCountry: "Bangladesh",
   },
   alumniOf: {
     "@type": "EducationalOrganization",
-    name: "University of Melbourne",
-    url: "https://www.unimelb.edu.au",
+    name: "East West University",
+    url: "https://www.ewubd.edu",
   },
   knowsAbout: [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Node.js",
-    "Express",
+    "Python",
+    "TensorFlow",
+    "PyTorch",
+    "Computer Vision",
+    "Natural Language Processing",
+    "FastAPI",
     "REST APIs",
     "Docker",
-    "Kubernetes",
     "AWS",
     "GCP",
-    "Playwright",
-    "AI workflows",
+    "MLOps",
   ],
 };
 

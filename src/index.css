@@ -55,9 +55,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .cord { position: absolute; top: 0; right: 1.1rem; z-index: 5; display: flex; flex-direction: column; align-items: center; padding: 0 0.6rem 0.4rem; border: 0; background: none; color: var(--muted); cursor: pointer; font: inherit; font-size: 0.8rem; transform-origin: 50% 0; }
 .cord::before { content: ""; width: 1.5px; height: 2rem; background: var(--brass); }
 .cord::after { content: ""; width: 0.8rem; height: 0.8rem; margin-top: -1px; border-radius: 50%; background: var(--brass); box-shadow: 0 0 0 4px var(--halo); }
-.cord span { order: 3; margin-top: 0.45rem; display: none; white-space: nowrap; }
+.cord span { order: 3; margin-top: 0.45rem; display: block; white-space: nowrap; }
 .cord:hover { color: var(--ink); }
-@media (min-width: 900px) { .cord { right: 2.2rem; } .cord::before { height: 4.6rem; } .cord span { display: block; } }
+@media (min-width: 900px) { .cord { right: 2.2rem; } .cord::before { height: 4.6rem; } }
 @media (prefers-reduced-motion: no-preference) {
   .cord.tug { animation: tug 0.5s cubic-bezier(.3,1.6,.5,1); }
   @keyframes tug { 30% { transform: translateY(12px); } 100% { transform: none; } }
@@ -292,6 +292,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .kit dd { margin: 0.3rem 0 0; }
 @media (min-width: 620px) { .kit { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 900px) { .kit { grid-template-columns: repeat(4, 1fr); margin-top: 4.5rem; } .also { margin-top: 3rem; } }
+.project-grid { display: grid; gap: 1rem; margin-top: 2rem; }
+.project-card { padding: 1.4rem; border: 1px solid var(--rule); background: var(--lift); }
+.project-card .kicker { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.project-card h3 { margin: 0.75rem 0 0; font: 500 1.55rem/1.1 var(--serif); }
+.project-card h4 { margin: 0.8rem 0 0; font: italic 400 1.3rem/1.15 var(--serif); }
+.project-card p:not(.kicker):not(.aside) { margin: 0.8rem 0 0; color: var(--body); }
+.project-card .aside { margin: 1rem 0; color: var(--muted); font-size: 0.92rem; }
+@media (min-width: 620px) { .project-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .project-grid { grid-template-columns: repeat(3, 1fr); } }
+.research-grid { display: grid; gap: 1rem; margin-top: 2rem; }
+.research-card { padding: 1.2rem 0; border-top: 1px solid var(--rule); }
+.research-card h3 { margin: 0; font: 500 1.35rem/1.2 var(--serif); }
+.research-card p { margin: 0.55rem 0 0.75rem; color: var(--body); }
+@media (min-width: 620px) { .research-grid { grid-template-columns: repeat(2, 1fr); column-gap: 2rem; } }
+@media (min-width: 1000px) { .research-grid { grid-template-columns: repeat(3, 1fr); } }
 
 /* Golden hour: the throw, and everything further out */
 .out { position: relative; padding: 4rem 0 3.5rem; }

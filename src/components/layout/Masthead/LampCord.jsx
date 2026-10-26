@@ -13,7 +13,7 @@ export default function LampCord() {
     <button
       type="button"
       className={tugging ? "cord tug" : "cord"}
-      aria-label="Lamp"
+      aria-label={night ? "Turn lamp off" : "Turn lamp on"}
       aria-pressed={night}
       onClick={() => {
         toggle();
@@ -21,7 +21,7 @@ export default function LampCord() {
       }}
       onAnimationEnd={() => setTugging(false)}
     >
-      <span aria-hidden="true">{night ? "Lamp on" : "Lamp off"}</span>
+      <span aria-hidden="true">{night ? "Turn lamp off" : "Turn lamp on"}</span>
     </button>
   );
 }

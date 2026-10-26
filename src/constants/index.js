@@ -1,6 +1,6 @@
 // Main constants
-export * from './constants';
+export * from "./constants";
 
 // Data constants
-export * from './work';
-export * from './technologies';
+export * from "./work";
+export * from "./technologies";

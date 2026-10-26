@@ -20,7 +20,7 @@ export default function Hero() {
           <h1>{HERO_CONTENT.headline}</h1>
           <p className="lede">{HERO_CONTENT.summary}</p>
           <div className="actions">
-            <a className="btn" href={HERO_CONTENT.resumeUrl} download="Yuelin-Liu-Resume.pdf">
+            <a className="btn" href={HERO_CONTENT.resumeUrl} download="DM-Rafiun-Bin-Masud-CV.pdf">
               Download résumé
             </a>
             {QUIET_LINKS.map((link) => (

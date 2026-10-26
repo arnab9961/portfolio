@@ -8,7 +8,7 @@ export default function Masthead({ homeHref, links }) {
     <div className="wrap">
       <header className="top">
         <a className="name" href={homeHref}>
-          Yuelin Liu
+          Rafiun Bin Masud
         </a>
         <nav aria-label="Primary">
           {links.map((link) => (

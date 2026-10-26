@@ -5,7 +5,8 @@ import ProfessionalContactForm from "./ProfessionalContactForm";
 const ELSEWHERE = [
   { label: "LinkedIn", href: CONTACT.socials.linkedin },
   { label: "GitHub", href: CONTACT.socials.github },
-  { label: "Writing", href: CONTACT.socials.blog },
+  { label: "Kaggle", href: CONTACT.socials.kaggle },
+  { label: "ResearchGate", href: CONTACT.socials.researchGate },
 ];
 
 export default function Contact() {
@@ -25,12 +26,6 @@ export default function Contact() {
             {CONTACT.email}
           </a>
           <dl className="reach">
-            <dt>Phone</dt>
-            <dd>
-              <a className="quiet" href={`tel:${CONTACT.phoneNo.replace(/\s/g, "")}`}>
-                {CONTACT.phoneNo}
-              </a>
-            </dd>
             <dt>Location</dt>
             <dd>{CONTACT.address}</dd>
             <dt>Elsewhere</dt>
@@ -54,10 +49,9 @@ export default function Contact() {
       </div>
 
       <footer className="colophon">
-        <p>Yuelin Liu, Melbourne, 2026.</p>
+        <p>D.M. Rafiun Bin Masud, Dhaka, 2026.</p>
         <p>
-          Set in Newsreader and Schibsted Grotesk. Colours sampled from an afternoon in Flagstaff
-          Gardens.
+          AI engineering, machine learning and research.
         </p>
       </footer>
     </div>
