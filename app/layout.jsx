@@ -10,7 +10,7 @@ export const viewport = {
 
 // Restores a visitor's night choice before first paint. Day is the default,
 // so a first visit never runs anything but the read.
-const RESTORE_LIGHT = `try{if(localStorage.getItem("portfolio-light")==="night")document.documentElement.dataset.light="night"}catch(e){}`;
+const RESTORE_LIGHT = `try{document.documentElement.dataset.light=localStorage.getItem("portfolio-light")==="night"?"night":"day"}catch(e){}`;
 
 export default function RootLayout({ children }) {
   return (

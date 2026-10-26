@@ -8,7 +8,11 @@ const CHANGE_EVENT = 'portfolio:light';
 
 const subscribe = (onChange) => {
   window.addEventListener(CHANGE_EVENT, onChange);
-  return () => window.removeEventListener(CHANGE_EVENT, onChange);
+  window.addEventListener('storage', onChange);
+  return () => {
+    window.removeEventListener(CHANGE_EVENT, onChange);
+    window.removeEventListener('storage', onChange);
+  };
 };
 
 const getSnapshot = () => (document.documentElement.dataset.light === 'night' ? 'night' : 'day');
@@ -18,7 +22,8 @@ export function useLight() {
   const light = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const toggle = () => {
-    const next = light === 'night' ? 'day' : 'night';
+    const current = document.documentElement.dataset.light === 'night' ? 'night' : 'day';
+    const next = current === 'night' ? 'day' : 'night';
     document.documentElement.dataset.light = next;
     try {
       localStorage.setItem(STORAGE_KEY, next);

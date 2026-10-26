@@ -302,30 +302,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (min-width: 620px) { .research-grid { grid-template-columns: repeat(2, 1fr); column-gap: 2rem; } }
 @media (min-width: 1000px) { .research-grid { grid-template-columns: repeat(3, 1fr); } }
 .vlogs { padding: 3.5rem 0 4rem; border-top: 1px solid var(--ink); }
-.vlog-browser { padding-top: 2.5rem; }
-.vlog-intro { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: 1.25rem; }
+.vlog-browser { padding-top: 1.5rem; }
+.vlog-intro { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: 0.75rem; }
 .vlog-kicker { margin: 0; color: var(--muted); font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .vlog-count { margin: 0; color: var(--muted); font-size: 0.9rem; }
-.vlog-layout { display: grid; gap: 2rem; margin-top: 2rem; }
-.vlog-categories { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 0.55rem; padding: 1rem; border: 1px solid var(--rule); text-transform: capitalize; }
+.vlog-layout { display: grid; gap: 1.25rem; margin-top: 1rem; }
+.vlog-categories { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 0.35rem; padding: 0.65rem; border: 1px solid var(--rule); text-transform: capitalize; }
 .vlog-nav-title { flex-basis: 100%; margin-bottom: 0.3rem; color: var(--muted); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
-.vlog-categories a { padding: 0.45rem 0.8rem; border: 1px solid transparent; color: var(--muted); text-decoration: none; }
+.vlog-categories a { padding: 0.3rem 0.6rem; border: 1px solid transparent; color: var(--muted); text-decoration: none; }
 .vlog-categories a:hover, .vlog-categories a[aria-current="page"] { border-color: var(--ink); color: var(--ink); }
 .vlog-results .vlogs { padding-top: 0; border-top: 0; }
-.vlog-grid { display: grid; gap: 0.9rem; margin-top: 0; }
-.vlog-card { display: grid; gap: 1rem; padding: clamp(1.1rem, 3vw, 2rem); border: 1px solid var(--rule); background: var(--lift); }
+.vlog-grid { display: grid; gap: 0.65rem; margin-top: 0; }
+.vlog-card { display: grid; gap: 0.65rem; padding: clamp(0.85rem, 2vw, 1.25rem); border: 1px solid var(--rule); background: var(--lift); }
 .vlog-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.vlog-card h3 { margin: 0; font: 500 clamp(1.5rem, 3vw, 2.2rem)/1.15 var(--serif); }
+.vlog-card h3 { margin: 0; font: 500 clamp(1.25rem, 2.5vw, 1.7rem)/1.15 var(--serif); }
 .vlog-card h3 a { color: inherit; text-decoration: none; }
 .vlog-card h3 a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
 .vlog-category { display: block; margin-bottom: 0.4rem; color: var(--muted); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
-.vlog-card p { margin: 0.65rem 0 0; color: var(--body); white-space: pre-wrap; }
+.vlog-card p { margin: 0.4rem 0 0; color: var(--body); white-space: pre-wrap; }
 .vlog-excerpt { max-width: 62ch; }
 .vlog-read, .vlog-back { display: inline-block; margin-top: 0.75rem; color: var(--link); }
 .vlog-back { margin-bottom: 1rem; }
 .vlog-detail { max-width: 48rem; }
-.vlog-detail .vlog-card { padding: clamp(1.25rem, 4vw, 3rem); }
-.vlog-code { overflow-x: auto; margin: 1rem 0 0; padding: 1rem; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 0.9rem/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre; }
+.vlog-detail .vlog-card { padding: clamp(1rem, 3vw, 1.75rem); }
+.vlog-code { overflow-x: auto; margin: 0.65rem 0 0; padding: 0.75rem; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 0.85rem/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre; }
 .code-input { font-family: ui-monospace, SFMono-Regular, Consolas, monospace !important; }
 @media (min-width: 620px) { .vlogs { padding-left: 0; padding-right: 0; } }
 @media (min-width: 900px) { .vlog-grid { grid-template-columns: minmax(0, 48rem); } }
