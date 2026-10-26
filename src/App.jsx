@@ -11,20 +11,19 @@ import Hero from "./components/sections/Hero/Hero";
 import Work from "./components/sections/Work/Work";
 import FurtherOut from "./components/sections/FurtherOut/FurtherOut";
 import Contact from "./components/sections/Contact/Contact";
-import Vlogs from "./components/sections/Vlogs/Vlogs";
 import usePortfolioContent from "./hooks/usePortfolioContent";
 
 const NAV_LINKS = [
   { label: "Work", href: "#projects" },
   { label: "Further out", href: "#further-out" },
-  { label: "Vlogs", href: "#vlogs" },
+  { label: "Vlogs", href: "/vlogs/" },
   { label: "Contact", href: "#contact" },
 ];
 
 function AppContent() {
   // Enable keyboard shortcuts
   useKeyboardShortcuts();
-  const { profile, vlogs } = usePortfolioContent();
+  const { profile } = usePortfolioContent();
 
   // Add skip link for accessibility
   useEffect(() => {
@@ -59,10 +58,6 @@ function AppContent() {
           <section id="further-out" className="out">
             <FurtherOut />
           </section>
-        </ErrorBoundary>
-
-        <ErrorBoundary sectionName="vlogs section">
-          <Vlogs posts={vlogs} />
         </ErrorBoundary>
 
         <ErrorBoundary sectionName="contact section">

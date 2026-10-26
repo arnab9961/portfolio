@@ -12,6 +12,22 @@ const EMPTY_PROFILE = {
   hero_image_url: "",
 };
 
+function getErrorMessage(error) {
+  if (!error) return "";
+  if (error.code === "42501") {
+    return "আপনার account admin হিসেবে অনুমোদিত নয়। Supabase-এর public.admin_users table-এ আপনার Auth user UUID যোগ করুন।";
+  }
+  if (error.code === "23505") {
+    return "এই title-এর vlog আগে থেকেই আছে। অন্য title ব্যবহার করুন।";
+  }
+  return error.message || "কাজটি সম্পন্ন করা যায়নি।";
+}
+
+function createSlug(title) {
+  const slug = title.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  return slug || `vlog-${Date.now()}`;
+}
+
 export default function AdminPage() {
   const [session, setSession] = useState(null);
   const [email, setEmail] = useState("");
@@ -33,24 +49,26 @@ export default function AdminPage() {
   }, [session]);
 
   async function loadContent() {
-    const [{ data: profileData }, { data: postData }] = await Promise.all([
+    const [profileResult, postsResult] = await Promise.all([
       supabase.from("site_profile").select("*").eq("id", 1).maybeSingle(),
       supabase.from("vlog_posts").select("*").order("created_at", { ascending: false }),
     ]);
-    if (profileData) setProfile(profileData);
-    if (postData) setPosts(postData);
+    if (profileResult.error) setMessage(getErrorMessage(profileResult.error));
+    if (postsResult.error) setMessage(getErrorMessage(postsResult.error));
+    if (profileResult.data) setProfile(profileResult.data);
+    if (postsResult.data) setPosts(postsResult.data);
   }
 
   async function login(event) {
     event.preventDefault();
     const { error } = await supabase.auth.signInWithPassword({ email, password });
-    setMessage(error ? error.message : "Signed in.");
+    setMessage(error ? getErrorMessage(error) : "Signed in.");
   }
 
   async function saveProfile(event) {
     event.preventDefault();
     const { error } = await supabase.from("site_profile").upsert({ ...profile, id: 1 });
-    setMessage(error ? error.message : "Profile saved.");
+    setMessage(error ? getErrorMessage(error) : "Profile saved.");
   }
 
   async function uploadImage(file, onUploaded) {
@@ -71,15 +89,18 @@ export default function AdminPage() {
   async function savePost(event) {
     event.preventDefault();
     const payload = {
-      ...draft,
-      slug: draft.title.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
+      title: draft.title.trim(),
+      body: draft.body.trim(),
+      image_url: draft.image_url || null,
+      status: draft.status,
+      slug: createSlug(draft.title),
       published_at: draft.status === "published" ? new Date().toISOString() : null,
     };
     const query = draft.id
       ? supabase.from("vlog_posts").update(payload).eq("id", draft.id)
       : supabase.from("vlog_posts").insert(payload);
     const { error } = await query;
-    setMessage(error ? error.message : "Vlog saved.");
+    setMessage(error ? getErrorMessage(error) : "Vlog saved.");
     if (!error) {
       setDraft({ title: "", body: "", image_url: "", status: "draft" });
       loadContent();
@@ -88,7 +109,7 @@ export default function AdminPage() {
 
   async function deletePost(id) {
     const { error } = await supabase.from("vlog_posts").delete().eq("id", id);
-    setMessage(error ? error.message : "Vlog deleted.");
+    setMessage(error ? getErrorMessage(error) : "Vlog deleted.");
     if (!error) loadContent();
   }
 
@@ -115,7 +136,7 @@ export default function AdminPage() {
     <main className="admin-page">
       <div className="admin-header"><Link className="quiet" href="/">Back to portfolio</Link><button type="button" className="quiet" onClick={() => supabase.auth.signOut()}>Sign out</button></div>
       <h1>Portfolio admin</h1>
-      <p>{message}</p>
+      {message && <p className={message === "Vlog saved." || message === "Profile saved." || message === "Vlog deleted." ? "" : "err"}>{message}</p>}
       <section className="admin-section"><h2>Profile</h2><form className="admin-form" onSubmit={saveProfile}>
         {["name", "eyebrow", "headline", "summary", "hero_image_url"].map((field) => <label key={field}>{field.replaceAll("_", " ")}{field === "summary" ? <textarea value={profile[field] || ""} onChange={(event) => setProfile({ ...profile, [field]: event.target.value })} /> : <input value={profile[field] || ""} onChange={(event) => setProfile({ ...profile, [field]: event.target.value })} />}</label>)}
         <label>Upload hero image<input type="file" accept="image/*" onChange={(event) => uploadImage(event.target.files[0], (url) => setProfile({ ...profile, hero_image_url: url }))} /></label>

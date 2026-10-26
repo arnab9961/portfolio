@@ -126,7 +126,7 @@ npm run preview
 The public site works with the fallback content when Supabase is not configured. To enable the admin dashboard and managed vlogs:
 
 1. Create a Supabase project and enable email/password auth.
-2. Run [`supabase/migrations/20261026000000_portfolio_admin.sql`](./supabase/migrations/20261026000000_portfolio_admin.sql) in the Supabase SQL editor.
+2. Run the migrations in [`supabase/migrations/`](./supabase/migrations/) in the Supabase SQL editor. The follow-up admin-membership migration is required so RLS can verify the signed-in admin.
 3. Create an Auth user, then add its UUID to `public.admin_users`:
 
 ```sql
@@ -140,7 +140,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLIC_KEY
 ```
 
-The dashboard is available at `/admin/`. Only users listed in `admin_users` can read drafts, write profile data, manage vlogs, or upload images. Never use a service-role key in browser-exposed environment variables.
+The dashboard is available at `/admin/`, and published vlogs are shown on their own `/vlogs/` page rather than in the homepage sections. Only users listed in `admin_users` can read drafts, write profile data, manage vlogs, or upload images. If saving a vlog reports that the account is not an admin, add the signed-in Auth user's UUID to `admin_users`. Never use a service-role key in browser-exposed environment variables.
 
 ## Deployment
 

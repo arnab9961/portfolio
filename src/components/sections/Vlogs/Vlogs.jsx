@@ -2,8 +2,6 @@ import PropTypes from "prop-types";
 import HourMark from "../../ui/common/HourMark";
 
 export default function Vlogs({ posts }) {
-  if (!posts.length) return null;
-
   return (
     <section id="vlogs" className="vlogs wrap" aria-labelledby="vlogs-heading">
       <HourMark at="late">Late. Notes from the road.</HourMark>
