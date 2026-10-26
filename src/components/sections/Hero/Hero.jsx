@@ -1,5 +1,5 @@
 import { AT_A_GLANCE, CONTACT, HERO_CONTENT } from "../../../constants/constants";
-import { useLight } from "../../../hooks/useLight";
+import PropTypes from "prop-types";
 import HourMark from "../../ui/common/HourMark";
 
 const QUIET_LINKS = [
@@ -7,18 +7,16 @@ const QUIET_LINKS = [
   { label: "GitHub", href: CONTACT.socials.github },
 ];
 
-export default function Hero() {
-  const { light } = useLight();
-  const night = light === "night";
+export default function Hero({ profile = null }) {
   const { day: dayView } = HERO_CONTENT.view;
 
   return (
     <div className="wrap">
       <div className="hero">
         <div className="text">
-          <HourMark at="morning">{HERO_CONTENT.eyebrow}</HourMark>
-          <h1>{HERO_CONTENT.headline}</h1>
-          <p className="lede">{HERO_CONTENT.summary}</p>
+          <HourMark at="morning">{profile?.eyebrow || HERO_CONTENT.eyebrow}</HourMark>
+          <h1>{profile?.headline || HERO_CONTENT.headline}</h1>
+          <p className="lede">{profile?.summary || HERO_CONTENT.summary}</p>
           <div className="actions">
             <a className="btn" href={HERO_CONTENT.resumeUrl} download="DM-Rafiun-Bin-Masud-CV.pdf">
               Download résumé
@@ -41,7 +39,7 @@ export default function Hero() {
           <div className="frame">
             {/* eslint-disable-next-line @next/next/no-img-element -- static export, pre-sized local asset */}
             <img
-              src={dayView.src}
+              src={profile?.hero_image_url || dayView.src}
               alt={dayView.alt}
               width="1200"
               height="800"
@@ -68,3 +66,12 @@ export default function Hero() {
     </div>
   );
 }
+
+Hero.propTypes = {
+  profile: PropTypes.shape({
+    headline: PropTypes.string,
+    summary: PropTypes.string,
+    eyebrow: PropTypes.string,
+    hero_image_url: PropTypes.string,
+  }),
+};

@@ -3,12 +3,12 @@ import LampCord from "./LampCord";
 
 // Shared by the homepage and the case-study routes, so it stays free of hooks:
 // only the cord is a client component.
-export default function Masthead({ homeHref, links }) {
+export default function Masthead({ homeHref, links, name = "D.M. Rafiun Bin Masud" }) {
   return (
     <div className="wrap">
       <header className="top">
         <a className="name" href={homeHref}>
-          D.M. Rafiun Bin Masud
+          {name}
         </a>
         <nav aria-label="Primary">
           {links.map((link) => (
@@ -31,4 +31,5 @@ Masthead.propTypes = {
       href: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  name: PropTypes.string,
 };

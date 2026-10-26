@@ -1,6 +1,6 @@
-# Yuelin Liu — Portfolio
+# D.M. Rafiun Bin Masud — Portfolio
 
-A personal software-engineering portfolio published at [www.liuyuelin.dev](https://www.liuyuelin.dev/). The site uses a static-first Next.js architecture and does not require a runtime backend for the portfolio itself.
+A personal AI-engineering portfolio published at [arnab9961.github.io](https://arnab9961.github.io/). The site is a static-first Next.js export with optional Supabase content management.
 
 ## Current Portfolio
 
@@ -9,7 +9,7 @@ The mounted homepage is ordered as follows:
 1. Morning — hero, with an at-a-glance strip (current role, previous role, stack, what I am open to)
 2. Midday — the work, argued in three chapters. Each chapter is one working principle, one lead story with an interactive illustration, and further evidence rows. Projects, experience and principles are merged here so each appears once.
 3. Golden hour — Further out: a sideways strip of five photographs, one per place, running from the windowsill outwards
-4. Late — Contact
+4. Late — Vlogs and Contact
 
 The page reads as one day. Day is the default light; the lamp cord in the masthead switches the whole site, case studies included, to night.
 
@@ -121,9 +121,30 @@ npm run preview
 
 `npm run verify` runs lint, the production build, static-output verification, and the recruiter-journey browser suite. GitHub Actions runs the same command for pull requests and pushes to `main`.
 
+## Supabase admin and vlogs
+
+The public site works with the fallback content when Supabase is not configured. To enable the admin dashboard and managed vlogs:
+
+1. Create a Supabase project and enable email/password auth.
+2. Run [`supabase/migrations/20261026000000_portfolio_admin.sql`](./supabase/migrations/20261026000000_portfolio_admin.sql) in the Supabase SQL editor.
+3. Create an Auth user, then add its UUID to `public.admin_users`:
+
+```sql
+insert into public.admin_users (user_id) values ('AUTH_USER_UUID');
+```
+
+4. Add these values to `.env.local` for local development and to Netlify environment variables:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLIC_KEY
+```
+
+The dashboard is available at `/admin/`. Only users listed in `admin_users` can read drafts, write profile data, manage vlogs, or upload images. Never use a service-role key in browser-exposed environment variables.
+
 ## Deployment
 
-`next build` writes the static site to `out/`. `vercel.json` configures Vercel to publish that directory, so deployment serves generated files without a portfolio application server.
+`next build` writes the static site to `out/`. Netlify uses [`netlify.toml`](./netlify.toml) to publish that directory. Set the build command to `npm run build` if configuring Netlify manually.
 
 ## Repository Guidance
 
