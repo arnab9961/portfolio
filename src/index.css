@@ -302,10 +302,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (min-width: 620px) { .research-grid { grid-template-columns: repeat(2, 1fr); column-gap: 2rem; } }
 @media (min-width: 1000px) { .research-grid { grid-template-columns: repeat(3, 1fr); } }
 .vlogs { padding: 3.5rem 1.25rem 4rem; border-top: 1px solid var(--ink); }
+.vlog-browser { padding-top: 2rem; }
+.vlog-categories, .vlog-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+.vlog-categories { padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); text-transform: capitalize; }
+.vlog-links { padding: 0 1.25rem 3rem; }
 .vlog-grid { display: grid; gap: 1.25rem; margin-top: 2rem; }
 .vlog-card { display: grid; gap: 1rem; padding: 1rem; border: 1px solid var(--rule); background: var(--lift); }
 .vlog-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .vlog-card h3 { margin: 0; font: 500 1.45rem/1.2 var(--serif); }
+.vlog-category { display: block; margin-bottom: 0.4rem; color: var(--muted); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .vlog-card p { margin: 0.65rem 0 0; color: var(--body); white-space: pre-wrap; }
 .vlog-code { overflow-x: auto; margin: 1rem 0 0; padding: 1rem; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 0.9rem/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre; }
 .code-input { font-family: ui-monospace, SFMono-Regular, Consolas, monospace !important; }
@@ -324,6 +329,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .admin-form label { display: grid; gap: 0.35rem; color: var(--muted); font-size: 0.95rem; text-transform: capitalize; }
 .admin-form input, .admin-form textarea, .admin-form select { width: 100%; padding: 0.7rem 0.8rem; border: 1px solid var(--rule); border-radius: 2px; background: var(--lift); color: var(--ink); font: inherit; }
 .admin-form textarea { min-height: 8rem; resize: vertical; }
+.admin-help { color: var(--muted); font-size: 0.9rem; }
 .admin-post { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; padding: 0.9rem 0; border-top: 1px solid var(--rule); }
 .admin-post span { color: var(--muted); font-size: 0.9rem; }
 .admin-post .quiet { margin-left: auto; border: 0; background: none; color: inherit; cursor: pointer; font: inherit; }

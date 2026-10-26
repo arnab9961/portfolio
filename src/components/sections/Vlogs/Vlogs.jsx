@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
+import Link from "next/link";
 import HourMark from "../../ui/common/HourMark";
+import { splitVlogBody } from "../../../utils/vlogContent";
 
 export default function Vlogs({ posts }) {
   return (
@@ -14,8 +16,17 @@ export default function Vlogs({ posts }) {
               <img src={post.image_url} alt="" loading="lazy" />
             )}
             <div>
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
+              <span className="vlog-category">{post.category || "uncategorized"}</span>
+              <h3><Link href={`/vlogs/?post=${encodeURIComponent(post.slug)}`}>{post.title}</Link></h3>
+              {splitVlogBody(post.body).map((part, index) =>
+                part.type === "code" ? (
+                  <pre className="vlog-code" key={`${post.id}-code-${index}`}>
+                    <code className={part.language ? `language-${part.language}` : undefined}>{part.value}</code>
+                  </pre>
+                ) : (
+                  <p key={`${post.id}-text-${index}`}>{part.value}</p>
+                ),
+              )}
               {post.code_snippet && (
                 <pre className="vlog-code">
                   <code className={post.code_language ? `language-${post.code_language}` : undefined}>
@@ -36,6 +47,7 @@ Vlogs.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
+      category: PropTypes.string,
       body: PropTypes.string.isRequired,
       code_snippet: PropTypes.string,
       code_language: PropTypes.string,

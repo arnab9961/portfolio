@@ -36,6 +36,7 @@ export default function AdminPage() {
   const [posts, setPosts] = useState([]);
   const [draft, setDraft] = useState({
     title: "",
+    category: "technical",
     body: "",
     code_snippet: "",
     code_language: "javascript",
@@ -97,6 +98,7 @@ export default function AdminPage() {
     event.preventDefault();
     const payload = {
       title: draft.title.trim(),
+      category: draft.category.trim().toLowerCase() || "uncategorized",
       body: draft.body.trim(),
       code_snippet: draft.code_snippet.trim() || null,
       code_language: draft.code_language.trim() || null,
@@ -113,6 +115,7 @@ export default function AdminPage() {
     if (!error) {
       setDraft({
         title: "",
+        category: "technical",
         body: "",
         code_snippet: "",
         code_language: "javascript",
@@ -160,9 +163,9 @@ export default function AdminPage() {
       </form></section>
       <section className="admin-section"><h2>New vlog</h2><form className="admin-form" onSubmit={savePost}>
         <label>Title<input value={draft.title} onChange={(event) => setDraft({ ...draft, title: event.target.value })} required /></label>
-        <label>Text<textarea value={draft.body} onChange={(event) => setDraft({ ...draft, body: event.target.value })} required /></label>
-        <label>Code language<input value={draft.code_language || ""} onChange={(event) => setDraft({ ...draft, code_language: event.target.value })} placeholder="javascript, python, sql" /></label>
-        <label>Code snippet<textarea className="code-input" value={draft.code_snippet || ""} onChange={(event) => setDraft({ ...draft, code_snippet: event.target.value })} placeholder="Paste an optional code snippet here" spellCheck="false" /></label>
+        <label>Category<input value={draft.category || ""} onChange={(event) => setDraft({ ...draft, category: event.target.value })} placeholder="technical, career, travel" required /></label>
+        <label>Text and code<textarea value={draft.body} onChange={(event) => setDraft({ ...draft, body: event.target.value })} placeholder={"Write text normally. Use fenced code like:\n```python\nprint('Hello')\n```"} required /></label>
+        <small className="admin-help">একই text-এর মধ্যে triple backtick ব্যবহার করলে code আলাদা snippet block হিসেবে দেখাবে।</small>
         <label>Status<select value={draft.status} onChange={(event) => setDraft({ ...draft, status: event.target.value })}><option value="draft">Draft</option><option value="published">Published</option></select></label>
         <label>Image<input type="file" accept="image/*" onChange={(event) => uploadImage(event.target.files[0], (url) => setDraft({ ...draft, image_url: url }))} /></label>
         <button className="btn" type="submit">{draft.id ? "Update vlog" : "Save vlog"}</button>
