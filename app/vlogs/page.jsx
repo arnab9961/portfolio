@@ -41,30 +41,35 @@ export default function VlogsPage() {
               {selectedPost ? "Reading one note" : `${categoryPosts.length} ${categoryPosts.length === 1 ? "note" : "notes"}`}
             </p>
           </div>
-          <div className="vlog-categories">
-            <Link href="/vlogs/" aria-current={!selectedCategory ? "page" : undefined}>All</Link>
-            {categories.map((category) => (
-              <Link
-                key={category}
-                href={`/vlogs/?category=${encodeURIComponent(category)}`}
-                aria-current={selectedCategory === category ? "page" : undefined}
-              >
-                {category}
-              </Link>
-            ))}
-          </div>
+          <div className="vlog-layout">
+            <nav className="vlog-categories" aria-label="Vlog categories">
+              <span className="vlog-nav-title">Browse notes</span>
+              <Link href="/vlogs/" aria-current={!selectedCategory ? "page" : undefined}>All notes</Link>
+              {categories.map((category) => (
+                <Link
+                  key={category}
+                  href={`/vlogs/?category=${encodeURIComponent(category)}`}
+                  aria-current={selectedCategory === category ? "page" : undefined}
+                >
+                  {category}
+                </Link>
+              ))}
+            </nav>
+            <div className="vlog-results">
           {selectedPost ? (
             <>
-              <Link className="quiet" href={`/vlogs/${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}` : ""}`}>
-                ← Back to vlogs
+              <Link className="vlog-back" href={`/vlogs/${selectedCategory ? `?category=${encodeURIComponent(selectedCategory)}` : ""}`}>
+                ← Back to all notes
               </Link>
-              <Vlogs posts={[selectedPost]} />
+              <Vlogs posts={[selectedPost]} detail />
             </>
           ) : (
             <>
               <Vlogs posts={categoryPosts} />
             </>
           )}
+            </div>
+          </div>
         </section>
         {!vlogs.length && (
           <div className="wrap" style={{ paddingBottom: "5rem" }}>
